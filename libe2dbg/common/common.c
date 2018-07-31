@@ -23,7 +23,7 @@ e2dbgworld_t	e2dbgworld;
 int		e2dbg_output(char *str)
 {
   //revm_output(str);
-  fprintf(stderr, str);
+  fputs(str, stderr);
   return (0);
 }
 

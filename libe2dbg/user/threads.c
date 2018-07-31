@@ -285,7 +285,7 @@ void		e2dbg_threads_print()
 	snprintf(logbuf, BUFSIZ, 
 		 " Thread ID %10u %c %8s --[ started on %s from %s \n", 
 		 (unsigned int) cur->tid, c, state, stime, entry);
-	fprintf(stderr, logbuf);
+	fputs(logbuf, stderr);
 	//e2dbg_output(logbuf);
       }
 
