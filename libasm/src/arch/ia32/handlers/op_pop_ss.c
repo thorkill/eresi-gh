@@ -2,7 +2,6 @@
  * @brief Handler for pop es instruction. Opcode = 0x17
  * @ingroup handlers_ia32
  *
- * $Id$
  */
 #include <libasm.h>
 #include <libasm-int.h>
@@ -14,7 +13,8 @@
  * @param len Length of data to disassemble.
  * @param proc Pointer to processor structure.
  */
-int     op_pop_ss(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
+int     op_pop_ss(asm_instr *new, u_char *opcode, u_int len,
+                  asm_processor *proc)
 {
   new->instr = ASM_POP;
   new->len += 1;

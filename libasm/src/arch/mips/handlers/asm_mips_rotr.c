@@ -1,5 +1,5 @@
 /**
-* @file libasm/src/arch/mips/handlers/asm_mips_rotr.c
+ * @file libasm/src/arch/mips/handlers/asm_mips_rotr.c
 ** @ingroup MIPS_instrs
 */
 /* Adam 'pi3' Zabrocki */
@@ -10,6 +10,6 @@
 int asm_mips_rotr(asm_instr *ins, u_char *buf, u_int len,
                   asm_processor *proc)
 {
-   ins->instr = ASM_MIPS_ROTR;
-   return 4;
+  ins->instr = ASM_MIPS_ROTR;
+  return 4;
 }

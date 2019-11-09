@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/i386_shrd_rmv_rv_ib.c
+ * @file libasm/src/arch/ia32/handlers/i386_shrd_rmv_rv_ib.c
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
@@ -18,15 +17,18 @@
 */
 
 int i386_shrd_rmv_rv_ib(asm_instr *new, u_char *opcode, u_int len,
-			asm_processor *proc)
+                        asm_processor *proc)
 {
-  int		olen;
+  int   olen;
   new->instr = ASM_SHRD;
   new->len += 1;
 #if LIBASM_USE_OPERAND_VECTOR
-  new->len += (olen = asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED, new));
-  new->len += asm_operand_fetch(&new->op[1], opcode + 1, ASM_CONTENT_GENERAL, new);
-  new->len += asm_operand_fetch(&new->op[2], opcode + 1 + olen, ASM_CONTENT_IMMEDIATEBYTE, new);
+  new->len += (olen = asm_operand_fetch(&new->op[0], opcode + 1,
+                                        ASM_CONTENT_ENCODED, new));
+  new->len += asm_operand_fetch(&new->op[1], opcode + 1, ASM_CONTENT_GENERAL,
+                                new);
+  new->len += asm_operand_fetch(&new->op[2], opcode + 1 + olen,
+                                ASM_CONTENT_IMMEDIATEBYTE, new);
 #else
   new->op[0].content = ASM_CONTENT_ENCODED;
   new->op[0].size = ASM_OSIZE_VECTOR;

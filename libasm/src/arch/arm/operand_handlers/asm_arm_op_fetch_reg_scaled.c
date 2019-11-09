@@ -1,5 +1,5 @@
 /**
-* @file libasm/src/arch/arm/operand_handlers/asm_arm_op_fetch_reg_scaled.c
+ * @file libasm/src/arch/arm/operand_handlers/asm_arm_op_fetch_reg_scaled.c
 ** @ingroup ARM_operands
 */
 #include <libasm.h>
@@ -17,9 +17,13 @@ int asm_arm_op_fetch_reg_scaled(asm_operand *operand, u_char *opcode,
       if (operand->imm == 0)
         {
           if (operand->shift_type == ASM_ARM_SHIFT_ROR)
-            operand->shift_type = ASM_ARM_SHIFT_RRX;
+            {
+              operand->shift_type = ASM_ARM_SHIFT_RRX;
+            }
           else
-            operand->imm = 32;
+            {
+              operand->imm = 32;
+            }
         }
     }
 

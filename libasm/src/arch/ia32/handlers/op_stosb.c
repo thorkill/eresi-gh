@@ -1,18 +1,17 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_stosb.c
+ * @file libasm/src/arch/ia32/handlers/op_stosb.c
  *
  * @ingroup IA32_instrs
-** $Id$
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_stosb" opcode="0xaa"/>
 */
 
-int op_stosb(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc) 
+int op_stosb(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
 {
   new->ptr_instr = opcode;
   new->instr = ASM_STOSB;

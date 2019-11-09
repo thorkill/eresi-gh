@@ -1,15 +1,12 @@
-/*
+/**
 **
-** $Id$
 **
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-
-
-int	new_puts(char *str)
+int new_puts(char *str)
 {
   printf("hijacked puts !\n");
   return (0);
@@ -17,11 +14,15 @@ int	new_puts(char *str)
 
 int main()
 {
-  char	*str;
+  char  *str;
 
   str = malloc(10);
+
   if (str == NULL)
-    goto err;
+    {
+      goto err;
+    }
+
   strcpy(str, "test");
   printf("First_printf %s\n", str);
   fflush(stdout);
@@ -30,7 +31,7 @@ int main()
   puts("Second_puts");
   fflush(stdout);
   return (0);
- err:
+err:
   printf("Malloc problem\n");
   return (-1);
 }

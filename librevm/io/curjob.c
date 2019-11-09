@@ -1,35 +1,41 @@
 /**
-* @file librevm/io/curjob.c
+ * @file librevm/io/curjob.c
  * @ingroup io
  * @brief Implement job API necessary for revm-io.
  *
  * Started September 16 03:11:04 2005 jfv
  *
- * $Id$
  *
  */
 #include "revm.h"
 
-
-/** 
- * @brief Return the current local job 
+/**
+ * @brief Return the current local job
  */
-revmjob_t		*revm_localjob_get()
+revmjob_t   *revm_localjob_get()
 {
-  revmjob_t		*job;
+  revmjob_t   *job;
   int                   index;
   char                  **keys;
   int                   keynbr;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   keys = hash_get_keys(&world.jobs, &keynbr);
+
   for (index = 0; index < keynbr; index++)
     {
       job = hash_get(&world.jobs, keys[index]);
+
       if (!job->ws.active)
-        continue;
+        {
+          continue;
+        }
+
       if (job->ws.io.type == REVM_IO_STD)
-        PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, job);
+        {
+          PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, job);
+        }
     }
-  PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__,(NULL));
+
+  PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, (NULL));
 }

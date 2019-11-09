@@ -1,13 +1,11 @@
 /**
-* @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_debug.c
+ * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_debug.c
  *
  * @ingroup IA32_operands
- * $Id$
  */
 
 #include <libasm.h>
 #include <libasm-int.h>
-
 
 /**
  *
@@ -23,10 +21,10 @@
  */
 
 int     asm_operand_fetch_debug(asm_operand *operand, u_char *opcode, int otype,
-				asm_instr *ins)
-{ 
+                                asm_instr *ins)
+{
   struct s_modrm        *modrm;
-  
+
   modrm = (struct s_modrm *) opcode;
   operand->content = ASM_CONTENT_DEBUG;
   operand->type = ASM_OPTYPE_REG;

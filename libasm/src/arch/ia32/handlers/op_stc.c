@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_stc.c
+ * @file libasm/src/arch/ia32/handlers/op_stc.c
  *
  * @ingroup IA32_instrs
-** $Id$
 **
 */
 #include <libasm.h>

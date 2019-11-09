@@ -1,11 +1,11 @@
 /**
-* @file libasm/src/arch/arm/handlers/asm_arm_blx2.c
+ * @file libasm/src/arch/arm/handlers/asm_arm_blx2.c
 ** @ingroup ARM_instrs
 */
 #include "libasm.h"
 
-int     asm_arm_blx2(asm_instr * ins, u_char * buf, u_int len,
-                    asm_processor * proc)
+int     asm_arm_blx2(asm_instr *ins, u_char *buf, u_int len,
+                     asm_processor *proc)
 {
   struct s_arm_decode_branch2 opcode;
   struct s_asm_proc_arm *inter;

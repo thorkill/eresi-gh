@@ -1,11 +1,10 @@
-/*
-** $Id$
+/**
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_mov_reg_iv" opcode="0xb8"/>
   <instruction func="op_mov_reg_iv" opcode="0xb9"/>
   <instruction func="op_mov_reg_iv" opcode="0xba"/>
@@ -17,7 +16,7 @@
 */
 
 int op_mov_reg_iv(asm_instr *new, u_char *opcode, u_int len,
-asm_processor *proc)
+                  asm_processor *proc)
 {
   struct s_modrm        *modrm;
 
@@ -28,7 +27,8 @@ asm_processor *proc)
   new->len += 1;
 
   new->len += asm_operand_fetch(&new->op[0], opcode + 0, ASM_CONTENT_OPMOD, new);
-  new->len += asm_operand_fetch(&new->op[1], opcode + 1, ASM_CONTENT_IMMEDIATE, new);
+  new->len += asm_operand_fetch(&new->op[1], opcode + 1, ASM_CONTENT_IMMEDIATE,
+                                new);
 
   return (new->len);
 }

@@ -1,11 +1,11 @@
 /**
-* @file libasm/src/arch/arm/handlers/asm_arm_bkpt.c
+ * @file libasm/src/arch/arm/handlers/asm_arm_bkpt.c
 ** @ingroup ARM_instrs
 */
 #include "libasm.h"
 
-int     asm_arm_bkpt(asm_instr * ins, u_char * buf, u_int len,
-                    asm_processor * proc)
+int     asm_arm_bkpt(asm_instr *ins, u_char *buf, u_int len,
+                     asm_processor *proc)
 {
   struct s_arm_decode_bkpt opcode;
 

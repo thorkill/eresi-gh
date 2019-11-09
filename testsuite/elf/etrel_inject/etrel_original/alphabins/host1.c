@@ -1,6 +1,5 @@
-/*
+/**
 **
-** $Id$
 **
 */
 #include <stdio.h>
@@ -9,11 +8,15 @@
 
 int main()
 {
-  char	*str;
+  char  *str;
 
   str = malloc(10);
+
   if (str == NULL)
-    goto err;
+    {
+      goto err;
+    }
+
   strcpy(str, "test");
   printf("First_printf %s\n", str);
   fflush(stdout);
@@ -24,7 +27,7 @@ int main()
   fflush(stdout);
   printf("End of main %s \n", "hehe");
   return (0);
- err:
+err:
   printf("Malloc problem %u\n", 42);
   return (-1);
 }

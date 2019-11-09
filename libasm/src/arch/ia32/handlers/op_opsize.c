@@ -1,21 +1,23 @@
-/*
-** $Id$
+/**
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_opsize" opcode="0x66"/>
  */
 
 int     op_opsize(asm_instr *new, u_char *opcode, u_int len,
-		  asm_processor *proc)
+                  asm_processor *proc)
 {
   asm_i386_processor    *i386p;
 
   if (!new->ptr_prefix)
-    new->ptr_prefix = opcode;
+    {
+      new->ptr_prefix = opcode;
+    }
+
   i386p = (asm_i386_processor *) proc;
 
   i386p->internals->opsize = !i386p->internals->opsize;

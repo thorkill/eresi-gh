@@ -1,5 +1,6 @@
+
 /**
-* @file libasm/src/arch/sparc/operand_handlers/asm_sparc_op_fetch_cc.c
+ * @file libasm/src/arch/sparc/operand_handlers/asm_sparc_op_fetch_cc.c
 ** @ingroup SPARC_operands
 */
 #include <libasm.h>
@@ -15,8 +16,8 @@
  * @return Operand length (currently unused in libasm-sparc)
  */
 
-int asm_sparc_op_fetch_cc(asm_operand *operand, u_char *opcode, 
-                 				   int otype, asm_instr *ins)
+int asm_sparc_op_fetch_cc(asm_operand *operand, u_char *opcode,
+                          int otype, asm_instr *ins)
 {
   operand->content = ASM_SP_OTYPE_CC;
   operand->type    = ASM_OPTYPE_REG;

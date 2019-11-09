@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_seta_rmb.c
+ * @file libasm/src/arch/ia32/handlers/op_seta_rmb.c
  *
  * @ingroup IA32_instrs
- * $Id$
 *
 */
 #include <libasm.h>
@@ -17,11 +16,12 @@
  * @return Length of instruction.
 */
 
-int op_seta_rmb(asm_instr *new, u_char *opcode, u_int len, 
-		asm_processor *proc)
+int op_seta_rmb(asm_instr *new, u_char *opcode, u_int len,
+                asm_processor *proc)
 {
   new->len += 1;
   new->instr = ASM_SET_U_GREATER;
-  new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODEDBYTE, new);
+  new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODEDBYTE,
+                                new);
   return (new->len);
 }

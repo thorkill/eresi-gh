@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_test_eax_iv.c
+ * @file libasm/src/arch/ia32/handlers/op_test_eax_iv.c
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
@@ -17,7 +16,7 @@
  * @return Length of instruction.
  */
 
-int op_test_eax_iv(asm_instr *new, u_char *opcode, u_int len, 
+int op_test_eax_iv(asm_instr *new, u_char *opcode, u_int len,
                    asm_processor *proc)
 {
   new->instr = ASM_TEST;
@@ -25,7 +24,7 @@ int op_test_eax_iv(asm_instr *new, u_char *opcode, u_int len,
   new->ptr_instr = opcode;
   new->type = ASM_TYPE_COMPARISON | ASM_TYPE_WRITEFLAG;
   new->flagswritten = ASM_FLAG_OF | ASM_FLAG_CF | ASM_FLAG_PF |
-                          ASM_FLAG_SF | ASM_FLAG_ZF;
+                      ASM_FLAG_SF | ASM_FLAG_ZF;
 
   new->len += asm_operand_fetch(&new->op[0], opcode, ASM_CONTENT_FIXED, new);
   new->op[0].type = ASM_OPTYPE_REG;

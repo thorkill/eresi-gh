@@ -1,15 +1,14 @@
-/*
-** $Id$
+/**
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   Opcode :              0x07
   Instruction :         POP
 */
 
-int op_pop_es(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc) 
+int op_pop_es(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
 {
   new->instr = ASM_POP;
   new->type = ASM_TYPE_TOUCHSP | ASM_TYPE_ASSIGN | ASM_TYPE_LOAD;

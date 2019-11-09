@@ -1,9 +1,8 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_xchg_rmv_rv.c
+ * @file libasm/src/arch/ia32/handlers/op_xchg_rmv_rv.c
  * @brief Handler for instruction xchg rmv,rv opcode 0x87
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
@@ -26,8 +25,10 @@ int op_xchg_rmv_rv(asm_instr *instr, u_char *opcode, u_int len,
   instr->instr = ASM_XCHG;
   instr->type = ASM_TYPE_LOAD | ASM_TYPE_STORE;
 
-  instr->len += asm_operand_fetch(&instr->op[0], opcode + 1, ASM_CONTENT_ENCODED, instr);
-  instr->len += asm_operand_fetch(&instr->op[1], opcode + 1, ASM_CONTENT_GENERAL, instr);
+  instr->len += asm_operand_fetch(&instr->op[0], opcode + 1, ASM_CONTENT_ENCODED,
+                                  instr);
+  instr->len += asm_operand_fetch(&instr->op[1], opcode + 1, ASM_CONTENT_GENERAL,
+                                  instr);
 
   return (instr->len);
 }

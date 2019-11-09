@@ -2,7 +2,6 @@
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_immediate.c
  *
  * @ingroup IA32_operands
- * $Id$
  */
 
 #include <libasm.h>
@@ -19,7 +18,7 @@
  */
 
 int     asm_operand_fetch_immediate(asm_operand *operand, u_char *opcode,
-				    int otype, asm_instr *ins)
+                                    int otype, asm_instr *ins)
 {
   operand->content = ASM_CONTENT_IMMEDIATE;
   operand->type = ASM_OPTYPE_IMM;

@@ -1,6 +1,5 @@
 /**
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_memory.c
- * $Id$
  */
 
 #include <libasm.h>
@@ -17,7 +16,7 @@
  */
 
 int     asm_operand_fetch_memory(asm_operand *operand, u_char *opcode,
-				 int otype, asm_instr *ins)
+                                 int otype, asm_instr *ins)
 {
   struct s_modrm        *modrm;
 

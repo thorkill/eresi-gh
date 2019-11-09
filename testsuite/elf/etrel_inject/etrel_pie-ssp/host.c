@@ -1,6 +1,5 @@
-/*
+/**
 **
-** $Id$
 **
 */
 #include <stdio.h>
@@ -8,7 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 
-int	legit_func(char *str)
+int legit_func(char *str)
 {
   printf("LEGIT FUNC\n");
   printf("legit func (%s) !\n", str);
@@ -17,14 +16,18 @@ int	legit_func(char *str)
 
 int main()
 {
-  char	*str;
-  char	buff[BUFSIZ];
+  char  *str;
+  char  buff[BUFSIZ];
 
   //read(0, buff, BUFSIZ-1);
 
   str = malloc(10);
+
   if (str == NULL)
-    goto err;
+    {
+      goto err;
+    }
+
   strcpy(str, "test");
   printf("First_printf %s\n", str);
   fflush(stdout);
@@ -38,7 +41,7 @@ int main()
   fflush(stdout);
   legit_func("test");
   return (0);
- err:
+err:
   printf("Malloc problem\n");
   return (-1);
 }

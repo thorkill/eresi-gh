@@ -2,7 +2,6 @@
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_immediateword.c
  *
  * @ingroup IA32_operands
- * $Id$
  */
 
 #include <libasm.h>
@@ -18,9 +17,9 @@
  * @return Operand length
  */
 
-int     asm_operand_fetch_immediateword(asm_operand *operand, u_char *opcode, 
-					int otype, asm_instr *ins)
-{ 
+int     asm_operand_fetch_immediateword(asm_operand *operand, u_char *opcode,
+                                        int otype, asm_instr *ins)
+{
   operand->content = ASM_CONTENT_IMMEDIATE;
   operand->type = ASM_OPTYPE_IMM;
   operand->ptr = opcode;

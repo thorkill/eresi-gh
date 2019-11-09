@@ -1,14 +1,12 @@
+
 /**
-* @file libelfsh/bt.c
+ * @file libelfsh/bt.c
  * @ingroup libelfsh
 ** bt.c for elfsh
-** 
-** Started on  Wed Jul 27 04:08:52 2005 ym
-** 
 **
-** $Id$
+** Started on  Wed Jul 27 04:08:52 2005 ym
+**
+**
 **
 */
 #include "libelfsh.h"
-
-

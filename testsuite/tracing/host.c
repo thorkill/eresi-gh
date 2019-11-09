@@ -1,3 +1,4 @@
+
 #define _XOPEN_SOURCE
 #include <unistd.h>
 #include <stdio.h>
@@ -24,10 +25,12 @@ int secondfunc(char *justastring)
 int main(int argc, char **argv)
 {
   unsigned int index;
+
   for (index = 0; index < argc; index++)
     {
       printf("arg[%d] %s\n", index, argv[index]);
     }
+
   char path[256];
   getcwd(path, 255);
   printf("BEFORE ! %s\n", path);

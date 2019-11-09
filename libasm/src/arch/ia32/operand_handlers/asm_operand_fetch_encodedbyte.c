@@ -2,7 +2,6 @@
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_encodedbyte.c
  *
  * @ingroup IA32_operands
- * $Id$
  */
 
 #include <libasm.h>
@@ -18,10 +17,10 @@
  * @return Operand length
  */
 
-int     asm_operand_fetch_encodedbyte(asm_operand *operand, u_char *opcode, 
-				      int otype, asm_instr *ins)
-{ 
-  int	len;
+int     asm_operand_fetch_encodedbyte(asm_operand *operand, u_char *opcode,
+                                      int otype, asm_instr *ins)
+{
+  int len;
   operand->content = ASM_CONTENT_ENCODED;
   len = operand_rmb(operand, opcode, ins->proc);
   operand->sbaser = get_reg_intel(operand->baser, operand->regset);

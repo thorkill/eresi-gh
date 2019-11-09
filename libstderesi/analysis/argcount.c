@@ -1,30 +1,30 @@
 /**
-* @file libstderesi/analysis/argcount.c
-* @ingroup analysis
-* @brief Command argcount (count arguments in a function)
+ * @file libstderesi/analysis/argcount.c
+ * @ingroup analysis
+ * @brief Command argcount (count arguments in a function)
 *
-* Started Jul 2 2005 00:03:44 mxatone
-* $Id: trace.c 1397 2009-09-13 02:19:08Z may $
+ * Started Jul 2 2005 00:03:44 mxatone
+ * $Id: trace.c 1397 2009-09-13 02:19:08Z may $
 *
 */
 #include "libstderesi.h"
 
-
-int		cmd_argcount()
+int   cmd_argcount()
 {
-  elfsh_Sym	*sym;
-  eresi_Addr	addr;
-  int		idx;
-  int		*args;
-  char		*name;
-  int		off;
-  char		buf[BUFSIZ];
+  elfsh_Sym *sym;
+  eresi_Addr  addr;
+  int   idx;
+  int   *args;
+  char    *name;
+  int   off;
+  char    buf[BUFSIZ];
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
 
   /* Resolve parameter */
   sym = elfsh_get_metasym_by_name(world.curjob->curfile,
-				  world.curjob->curcmd->param[0]);
+                                  world.curjob->curcmd->param[0]);
+
   if (sym)
     {
       addr = sym->st_value;
@@ -33,30 +33,40 @@ int		cmd_argcount()
   else
     {
       addr = revm_lookup_addr(world.curjob->curcmd->param[0]);
+
       if (addr == 0)
-	PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__, 
-		     "Invalid function/address request", -1);
+        PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
+                     "Invalid function/address request", -1);
+
       name = elfsh_reverse_metasym(world.curjob->curfile, addr, &off);
+
       if (!name)
-	name = "func-unresolved";
+        {
+          name = "func-unresolved";
+        }
     }
 
   /* Call feature vector */
   args = elfsh_args_count(world.curjob->curfile, 0, addr);
+
   if (args == NULL)
-    PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__, 
-		 "Failed to count arguments", -1);
+    PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
+                 "Failed to count arguments", -1);
+
   snprintf(buf, sizeof(buf), " [*] Argument counting on function <%s> ("XFMT")\n",
-	   name, addr);
+           name, addr);
 
   /* Offset 8 is always first argument, at least on x86 */
   off = 8;
+
   for (idx = 0; args[idx]; idx++)
     {
-      snprintf(buf, sizeof(buf), "  VAR %u - stack offset %d - size %u bytes \n", idx, off, args[idx]);
+      snprintf(buf, sizeof(buf), "  VAR %u - stack offset %d - size %u bytes \n", idx,
+               off, args[idx]);
       off += args[idx];
       revm_output(buf);
     }
+
   revm_output("\n");
 
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);

@@ -1,6 +1,5 @@
 /**
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_opmod.c
- * $Id$
  */
 
 #include <libasm.h>
@@ -17,13 +16,13 @@
  */
 
 int     asm_operand_fetch_opmod(asm_operand *operand, u_char *opcode,
-				int type, asm_instr *ins)
+                                int type, asm_instr *ins)
 {
   struct s_modrm        *modrm;
   operand->content = ASM_CONTENT_OPMOD;
   operand->type = ASM_OPTYPE_REG;
   operand->regset = asm_proc_opsize(ins->proc) ?
-    ASM_REGSET_R16 : ASM_REGSET_R32;
+                    ASM_REGSET_R16 : ASM_REGSET_R32;
   modrm = (struct s_modrm *) opcode;
   operand->baser = modrm->m;
   operand->sbaser = get_reg_intel(operand->baser, operand->regset);

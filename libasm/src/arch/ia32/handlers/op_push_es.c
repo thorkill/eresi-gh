@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_push_es.c
+ * @file libasm/src/arch/ia32/handlers/op_push_es.c
  *
  * @ingroup IA32_instrs
-** $Id$
 */
 #include <libasm.h>
 #include <libasm-int.h>
@@ -11,7 +10,7 @@
  * @brief Handler for instruction push es opcode 0x06
 */
 
-int op_push_es(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc) 
+int op_push_es(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
 {
   new->len += 1;
   new->ptr_instr = opcode;

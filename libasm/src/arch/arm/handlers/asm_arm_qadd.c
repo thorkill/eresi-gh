@@ -1,11 +1,11 @@
 /**
-* @file libasm/src/arch/arm/handlers/asm_arm_qadd.c
+ * @file libasm/src/arch/arm/handlers/asm_arm_qadd.c
 ** @ingroup ARM_instrs
 */
 #include "libasm.h"
 
-int     asm_arm_qadd(asm_instr * ins, u_char * buf, u_int len,
-                    asm_processor * proc)
+int     asm_arm_qadd(asm_instr *ins, u_char *buf, u_int len,
+                     asm_processor *proc)
 {
   struct s_arm_decode_multiply opcode;
   struct s_asm_proc_arm *inter;

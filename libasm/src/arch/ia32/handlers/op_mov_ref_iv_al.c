@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_mov_ref_iv_al.c
+ * @file libasm/src/arch/ia32/handlers/op_mov_ref_iv_al.c
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
@@ -14,7 +13,7 @@
  */
 
 int op_mov_ref_iv_al(asm_instr *new, u_char *opcode, u_int len,
-		     asm_processor *proc)
+                     asm_processor *proc)
 {
   new->instr = ASM_MOV;
   new->type = ASM_TYPE_ASSIGN;

@@ -1,6 +1,5 @@
-/*
+/**
 **
-** $Id$
 **
 */
 #include <stdio.h>
@@ -8,7 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 
-int	legit_func(char *str)
+int legit_func(char *str)
 {
   puts("legit func !");
   return (0);
@@ -16,10 +15,10 @@ int	legit_func(char *str)
 
 int main()
 {
-  char	*str;
-  char	buff[BUFSIZ];
+  char  *str;
+  char  buff[BUFSIZ];
 
-  read(0, buff, BUFSIZ-1);
+  read(0, buff, BUFSIZ - 1);
 
   puts("First_puts");
 
@@ -28,6 +27,6 @@ int main()
   fflush(stdout);
 
   legit_func("test");
- 
+
   return (0);
 }

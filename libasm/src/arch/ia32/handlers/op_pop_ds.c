@@ -1,14 +1,14 @@
-/*
-** $Id$
+/**
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_pop_ds" opcode="0x1f"/>
 */
 
-int     op_pop_ds(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc) 
+int     op_pop_ds(asm_instr *new, u_char *opcode, u_int len,
+                  asm_processor *proc)
 {
   new->instr = ASM_POP;
   new->ptr_instr = opcode;

@@ -2,7 +2,6 @@
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_jump.c
  *
  * @ingroup IA32_operands
- * $Id$
  */
 
 #include <libasm.h>
@@ -19,15 +18,15 @@
  */
 
 int     asm_operand_fetch_jump(asm_operand *operand, u_char *opcode,
-			       int otype, asm_instr *ins)
+                               int otype, asm_instr *ins)
 {
-  u_int	len;
+  u_int len;
 
   operand->content = ASM_CONTENT_JUMP;
-	operand->type = ASM_OPTYPE_MEM;
+  operand->type = ASM_OPTYPE_MEM;
   operand->memtype = ASM_OP_VALUE | ASM_OP_ADDRESS;
   operand->ptr = opcode;
-	operand->imm = 0;
+  operand->imm = 0;
   len = asm_proc_opsize(ins->proc) ? 2 : 4;
   operand->len = len;
   memcpy(&operand->imm, opcode, len);

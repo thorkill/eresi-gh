@@ -1,28 +1,30 @@
+
 /**
-* @file libelfsh/vectors_register.c
+ * @file libelfsh/vectors_register.c
 ** @ingroup libelfsh
 **
 ** vectors_register.c for libelfsh (The ELF shell library)
 **
 ** API for registering handlers in vectors of Libelfsh
 **
-** $Id$$
 */
 #include "libelfsh.h"
 
-
-int		elfsh_register_readmemf(u_int hostype, u_int exectype, void *fct)
+int   elfsh_register_readmemf(u_int hostype, u_int exectype, void *fct)
 {
-  vector_t	*mem;
-  u_int		*dim;
+  vector_t  *mem;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
+
   if (hostype >= ELFSH_HOST_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Host type", -1);
+                 "Invalid Host type", -1);
+
   if (exectype >= LIBELFSH_MODE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid execution Mode", -1);
+
   mem = aspect_vector_get(ELFSH_HOOK_READMEMF);
   dim    = alloca(sizeof(u_int) * 4);
   dim[0] = hostype;
@@ -31,19 +33,21 @@ int		elfsh_register_readmemf(u_int hostype, u_int exectype, void *fct)
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
 
-
-int		elfsh_register_writememf(u_int hostype, u_int exectype, void *fct)
+int   elfsh_register_writememf(u_int hostype, u_int exectype, void *fct)
 {
-  vector_t	*mem;
-  u_int		*dim;
+  vector_t  *mem;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
+
   if (hostype >= ELFSH_HOST_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Host type", -1);
+                 "Invalid Host type", -1);
+
   if (exectype >= LIBELFSH_MODE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid execution Mode", -1);
+
   mem = aspect_vector_get(ELFSH_HOOK_WRITEMEMF);
   dim    = alloca(sizeof(u_int) * 4);
   dim[0] = hostype;
@@ -52,19 +56,21 @@ int		elfsh_register_writememf(u_int hostype, u_int exectype, void *fct)
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
 
-
-int		elfsh_register_readmem(u_int ostype, u_int devicetype, void *fct)
+int   elfsh_register_readmem(u_int ostype, u_int devicetype, void *fct)
 {
-  vector_t	*mem;
-  u_int		*dim;
+  vector_t  *mem;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
+
   if (devicetype >= ELFSH_IOTYPE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid Operating System type", -1);
+
   mem = aspect_vector_get(ELFSH_HOOK_READMEM);
   dim    = alloca(sizeof(u_int) * 3);
   dim[0] = ostype;
@@ -73,19 +79,21 @@ int		elfsh_register_readmem(u_int ostype, u_int devicetype, void *fct)
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
 
-
-int		elfsh_register_readmema(u_int ostype, u_int devicetype, void *fct)
+int   elfsh_register_readmema(u_int ostype, u_int devicetype, void *fct)
 {
-  vector_t	*mem;
-  u_int		*dim;
+  vector_t  *mem;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
+
   if (devicetype >= ELFSH_IOTYPE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid Operating System type", -1);
+
   mem = aspect_vector_get(ELFSH_HOOK_READMEMA);
   dim    = alloca(sizeof(u_int) * 3);
   dim[0] = ostype;
@@ -94,20 +102,22 @@ int		elfsh_register_readmema(u_int ostype, u_int devicetype, void *fct)
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
 
-
-int		elfsh_register_writemem(u_int ostype, u_int devicetype, void *fct)
+int   elfsh_register_writemem(u_int ostype, u_int devicetype, void *fct)
 
 {
-  vector_t	*mem;
-  u_int		*dim;
+  vector_t  *mem;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
+
   if (devicetype >= ELFSH_IOTYPE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
                  "Invalid Operating System type", -1);
+
   mem = aspect_vector_get(ELFSH_HOOK_WRITEMEM);
   dim    = alloca(sizeof(u_int) * 3);
   dim[0] = ostype;
@@ -115,7 +125,6 @@ int		elfsh_register_writemem(u_int ostype, u_int devicetype, void *fct)
   aspect_vectors_insert(mem, dim, (unsigned long) fct);
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
-
 
 /**
  * Registration handlers
@@ -126,26 +135,28 @@ int		elfsh_register_writemem(u_int ostype, u_int devicetype, void *fct)
  * @param fct
  * @return
  */
-int	elfsh_register_altplthook(u_char archtype,
-                                  u_char objtype,
-                                  u_char ostype,
-                                  void   *fct)
+int elfsh_register_altplthook(u_char archtype,
+                              u_char objtype,
+                              u_char ostype,
+                              void   *fct)
 {
-  vector_t	*altplt;
-  u_int		*dim;
+  vector_t  *altplt;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   altplt = aspect_vector_get(ELFSH_HOOK_ALTPLT);
 
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
 
   dim = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
@@ -154,7 +165,6 @@ int	elfsh_register_altplthook(u_char archtype,
   aspect_vectors_insert(altplt, dim, (unsigned long) fct);
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
-
 
 /**
  * Register an EXTPLT handler
@@ -165,26 +175,29 @@ int	elfsh_register_altplthook(u_char archtype,
  * @param fct
  * @return
  */
-int		elfsh_register_extplthook(u_char archtype,
-                                          u_char objtype,
-                                          u_char ostype,
-                                          void   *fct)
+int   elfsh_register_extplthook(u_char archtype,
+                                u_char objtype,
+                                u_char ostype,
+                                void   *fct)
 {
-  vector_t	*extplt;
-  u_int		*dim;
+  vector_t  *extplt;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
 
   extplt = aspect_vector_get(ELFSH_HOOK_EXTPLT);
+
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
 
   dim = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
@@ -193,7 +206,6 @@ int		elfsh_register_extplthook(u_char archtype,
   aspect_vectors_insert(extplt, dim, (unsigned long) fct);
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
-
 
 /**
  * Register an PLT handler
@@ -204,24 +216,27 @@ int		elfsh_register_extplthook(u_char archtype,
  * @param fct
  * @return
  */
-int		elfsh_register_plthook(u_char archtype, u_char objtype,
-                                       u_char ostype, void *fct)
+int   elfsh_register_plthook(u_char archtype, u_char objtype,
+                             u_char ostype, void *fct)
 {
-  vector_t	*plt;
-  u_int		*dim;
+  vector_t  *plt;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
 
   plt = aspect_vector_get(ELFSH_HOOK_PLT);
+
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
 
   dim    = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
@@ -239,11 +254,11 @@ int		elfsh_register_plthook(u_char archtype, u_char objtype,
  * @param fct
  * @return
  */
-int	elfsh_register_encodeplthook(u_char archtype, u_char objtype,
-                                     u_char ostype, void *fct)
+int elfsh_register_encodeplthook(u_char archtype, u_char objtype,
+                                 u_char ostype, void *fct)
 {
-  vector_t	*encodeplt;
-  u_int		*dim;
+  vector_t  *encodeplt;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
 
@@ -251,13 +266,15 @@ int	elfsh_register_encodeplthook(u_char archtype, u_char objtype,
 
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
 
   dim = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
@@ -275,11 +292,11 @@ int	elfsh_register_encodeplthook(u_char archtype, u_char objtype,
  * @param fct
  * @return
  */
-int	elfsh_register_encodeplt1hook(u_char archtype, u_char objtype,
-                                      u_char ostype, void *fct)
+int elfsh_register_encodeplt1hook(u_char archtype, u_char objtype,
+                                  u_char ostype, void *fct)
 {
-  vector_t	*encodeplt1;
-  u_int		*dim;
+  vector_t  *encodeplt1;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
 
@@ -287,13 +304,16 @@ int	elfsh_register_encodeplt1hook(u_char archtype, u_char objtype,
 
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
+
   dim = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
   dim[1] = objtype;
@@ -301,8 +321,6 @@ int	elfsh_register_encodeplt1hook(u_char archtype, u_char objtype,
   aspect_vectors_insert(encodeplt1, dim, (unsigned long) fct);
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
-
-
 
 /**
  * Register an ET_REL injection handler
@@ -312,24 +330,26 @@ int	elfsh_register_encodeplt1hook(u_char archtype, u_char objtype,
  * @param fct
  * @return
  */
-int	elfsh_register_relhook(u_char archtype, u_char objtype, u_char ostype,
-                               void *fct)
+int elfsh_register_relhook(u_char archtype, u_char objtype, u_char ostype,
+                           void *fct)
 {
-  vector_t	*rel;
-  u_int		*dim;
+  vector_t  *rel;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   rel = aspect_vector_get(ELFSH_HOOK_REL);
 
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
 
   dim = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
@@ -339,7 +359,6 @@ int	elfsh_register_relhook(u_char archtype, u_char objtype, u_char ostype,
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
 
-
 /**
  * Register a control flow redirection handler
  * @param archtype
@@ -348,24 +367,26 @@ int	elfsh_register_relhook(u_char archtype, u_char objtype, u_char ostype,
  * @param fct
  * @return
  */
-int	elfsh_register_cflowhook(u_char archtype, u_char objtype,
-                                 u_char ostype, void *fct)
+int elfsh_register_cflowhook(u_char archtype, u_char objtype,
+                             u_char ostype, void *fct)
 {
-  vector_t	*cflow;
-  u_int		*dim;
+  vector_t  *cflow;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   cflow = aspect_vector_get(ELFSH_HOOK_CFLOW);
 
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
 
   dim = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
@@ -375,7 +396,6 @@ int	elfsh_register_cflowhook(u_char archtype, u_char objtype,
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
 
-
 /**
  * Register a args counting redirection handler
  * @param archtype
@@ -384,24 +404,26 @@ int	elfsh_register_cflowhook(u_char archtype, u_char objtype,
  * @param fct
  * @return
  */
-int	elfsh_register_argchook(u_char archtype, u_char objtype,
-                                u_char ostype, void *fct)
+int elfsh_register_argchook(u_char archtype, u_char objtype,
+                            u_char ostype, void *fct)
 {
-  vector_t	*argcp;
-  u_int		*dim;
+  vector_t  *argcp;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   argcp = aspect_vector_get(ELFSH_HOOK_ARGC);
 
   if (archtype >= ELFSH_ARCH_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Architecture type", -1);
+                 "Invalid Architecture type", -1);
+
   if (objtype >= ELFSH_FILE_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Object type", -1);
+                 "Invalid Object type", -1);
+
   if (ostype >= ELFSH_OS_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Operating System type", -1);
+                 "Invalid Operating System type", -1);
 
   dim = alloca(sizeof(u_int) * 4);
   dim[0] = archtype;
@@ -411,31 +433,29 @@ int	elfsh_register_argchook(u_char archtype, u_char objtype,
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
 
-
-
 /**
  * @brief Register a runtime map vector handler
  * @param hostype The host type to register the handler for.
  * @param fct The function pointer to register.
  * @return Success (0) or Error (-1)
  */
-int		elfsh_register_allochook(u_char hostype, void *fct)
+int   elfsh_register_allochook(u_char hostype, void *fct)
 {
-  vector_t	*map;
-  u_int		*dim;
+  vector_t  *map;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   map = aspect_vector_get(ELFSH_HOOK_ALLOC);
+
   if (hostype >= ELFSH_HOST_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Host type", -1);
+                 "Invalid Host type", -1);
+
   dim = alloca(sizeof(u_int));
   dim[0] = hostype;
   aspect_vectors_insert(map, dim, (unsigned long) fct);
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
-
-
 
 /**
  * @brief Register a mprotect vector handler
@@ -443,22 +463,23 @@ int		elfsh_register_allochook(u_char hostype, void *fct)
  * @param fct The function pointer to register.
  * @return Success (0) or Error (-1)
  */
-int		elfsh_register_mprotecthook(u_char hostype, void *fct)
+int   elfsh_register_mprotecthook(u_char hostype, void *fct)
 {
-  vector_t	*mprot;
-  u_int		*dim;
+  vector_t  *mprot;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   mprot = aspect_vector_get(ELFSH_HOOK_MPROTECT);
+
   if (hostype >= ELFSH_HOST_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Host type", -1);
+                 "Invalid Host type", -1);
+
   dim = alloca(sizeof(u_int));
   dim[0] = hostype;
   aspect_vectors_insert(mprot, dim, (unsigned long) fct);
   PROFILER_ROUT(__FILE__, __FUNCTION__, __LINE__, 0);
 }
-
 
 /**
  * @brief Register a munprotect vector handler
@@ -466,16 +487,18 @@ int		elfsh_register_mprotecthook(u_char hostype, void *fct)
  * @param fct The function pointer to register.
  * @return Success (0) or Error (-1)
  */
-int		elfsh_register_munprotecthook(u_char hostype, void *fct)
+int   elfsh_register_munprotecthook(u_char hostype, void *fct)
 {
-  vector_t	*munprot;
-  u_int		*dim;
+  vector_t  *munprot;
+  u_int   *dim;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   munprot = aspect_vector_get(ELFSH_HOOK_MUNPROTECT);
+
   if (hostype >= ELFSH_HOST_NUM)
     PROFILER_ERR(__FILE__, __FUNCTION__, __LINE__,
-                      "Invalid Host type", -1);
+                 "Invalid Host type", -1);
+
   dim = alloca(sizeof(u_int));
   dim[0] = hostype;
   aspect_vectors_insert(munprot, dim, (unsigned long) fct);

@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/i386_group16.c
+ * @file libasm/src/arch/ia32/handlers/i386_group16.c
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  * Changelog
  * 2007-05-29: operand type fixed.
@@ -20,43 +19,58 @@
 */
 
 int i386_group16(asm_instr *new, u_char *opcode, u_int len,
-		 asm_processor *proc)
+                 asm_processor *proc)
 {
-  struct s_modrm	*modrm;
+  struct s_modrm  *modrm;
+
   if (new->ptr_instr != 0)
-    new->ptr_instr = opcode - 1;
+    {
+      new->ptr_instr = opcode - 1;
+    }
+
   new->len += 1;
   new->instr = ASM_BAD;
 
-
   modrm = (struct s_modrm *) opcode + 1;
-  switch(modrm->r)
+
+  switch (modrm->r)
     {
     case 0:
       new->instr = ASM_FXSAVE;
-      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED, new);
+      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED,
+                                    new);
       break;
+
     case 1:
       new->instr = ASM_FXRSTORE;
-      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED, new);
+      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED,
+                                    new);
       break;
+
     case 2:
       new->instr = ASM_LDMXCSR;
-      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED, new);
+      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED,
+                                    new);
       break;
+
     case 3:
       new->instr = ASM_STMXCSR;
-      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED, new);
+      new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_ENCODED,
+                                    new);
       break;
+
     case 4:
       new->instr = ASM_BAD;
       break;
+
     case 5:
       new->instr = ASM_LFENCE;
       break;
+
     case 6:
       new->instr = ASM_MFENCE;
       break;
+
     case 7:
       new->instr = ASM_SFENCE;
       ///CLFUSH

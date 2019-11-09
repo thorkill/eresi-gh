@@ -1,11 +1,10 @@
-/*
-** $Id$
+/**
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_cld" opcode="0xfc"/>
 */
 

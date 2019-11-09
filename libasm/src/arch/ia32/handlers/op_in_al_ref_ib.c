@@ -1,10 +1,9 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_in_al_ref_ib.c
+ * @file libasm/src/arch/ia32/handlers/op_in_al_ref_ib.c
  *
  * @ingroup IA32_instrs
  * @brief Handler for instruction in al,ib opcode 0xe4
- 
- * $Id$
+
  *
  */
 #include <libasm.h>
@@ -26,7 +25,8 @@ int op_in_al_ref_ib(asm_instr *new, u_char *opcode, u_int len,
 
 #if LIBASM_USE_OPERAND_VECTOR
   new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_FIXED, new);
-  new->len += asm_operand_fetch(&new->op[1], opcode + 1, ASM_CONTENT_IMMEDIATEBYTE, new);
+  new->len += asm_operand_fetch(&new->op[1], opcode + 1,
+                                ASM_CONTENT_IMMEDIATEBYTE, new);
 #else
 
   new->op[0].type = ASM_OPTYPE_REG;

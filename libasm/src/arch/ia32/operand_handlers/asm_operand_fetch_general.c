@@ -2,7 +2,6 @@
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_general.c
  *
  * @ingroup IA32_operands
- * $Id$
  * @brief Operand Handler to decode data for operand type ASM_CONTENT_GENERAL
  */
 
@@ -20,7 +19,7 @@
  */
 
 int     asm_operand_fetch_general(asm_operand *operand, u_char *opcode,
-				  int type, asm_instr *ins)
+                                  int type, asm_instr *ins)
 {
   struct s_modrm        *modrm;
 

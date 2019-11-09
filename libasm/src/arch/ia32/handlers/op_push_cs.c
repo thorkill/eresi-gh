@@ -2,17 +2,15 @@
  * @brief Handler for instruction push cs opcode 0x0e
  *
  * @ingroup IA32_instrs
-** $Id$
 */
 #include <libasm.h>
 #include <libasm-int.h>
-
 
 /**
  * @brief Handler for instruction push cs opcode 0x0e
  */
 int op_push_cs(asm_instr *new, u_char *opcode, u_int len,
-               asm_processor *proc) 
+               asm_processor *proc)
 {
   new->len += 1;
   new->ptr_instr = opcode;

@@ -2,7 +2,6 @@
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_generalbyte.c
  *
  * @ingroup IA32_operands
- * $Id$
  */
 
 #include <libasm.h>
@@ -19,7 +18,7 @@
  */
 
 int     asm_operand_fetch_generalbyte(asm_operand *operand, u_char *opcode,
-				      int type, asm_instr *ins)
+                                      int type, asm_instr *ins)
 {
   struct s_modrm        *modrm;
 

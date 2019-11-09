@@ -1,14 +1,12 @@
-/*
-** $Id$
+/**
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_jno" opcode="0x71"/>
 */
-
 
 int  op_jno(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
 {

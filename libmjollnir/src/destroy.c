@@ -1,43 +1,45 @@
 /**
  * (C) 2006-2008 The ERESI team
  *
-* @file libmjollnir/src/destroy.c
+ * @file libmjollnir/src/destroy.c
  * @ingroup libmjollnir
  * @brief Cleaning API for removing previously saved analysis.
  */
 #include "libmjollnir.h"
 
-
 /** Remove the whole content of as hash table of containers */
-void		mjr_hash_destroy(hash_t *hash, u_char haslists)
+void    mjr_hash_destroy(hash_t *hash, u_char haslists)
 {
-  char		**keys;
-  int		nbr;
-  u_int		index;
-  container_t	*data;
+  char    **keys;
+  int   nbr;
+  u_int   index;
+  container_t *data;
 
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   keys = hash_get_keys(hash, &nbr);
+
   for (index = 0; index < nbr; index++)
     {
       data = (container_t *) hash_get(hash, keys[index]);
+
       if (haslists)
-	{
-	  elist_destroy(data->inlinks);
-	  elist_destroy(data->outlinks);
-	}
+        {
+          elist_destroy(data->inlinks);
+          elist_destroy(data->outlinks);
+        }
+
       hash_del(hash, keys[index]);
       XFREE(__FILE__, __FUNCTION__, __LINE__, data);
       XFREE(__FILE__, __FUNCTION__, __LINE__, keys[index]);
     }
+
   hash->elmnbr = 0;
   XFREE(__FILE__, __FUNCTION__, __LINE__, keys);
   PROFILER_OUT(__FILE__, __FUNCTION__, __LINE__);
 }
 
-
 /** Remove existing control flow analysis stored information */
-void		mjr_analyse_destroy(mjrcontext_t *ctx)
+void    mjr_analyse_destroy(mjrcontext_t *ctx)
 {
   PROFILER_IN(__FILE__, __FUNCTION__, __LINE__);
   elfsh_remove_section(ctx->obj, ELFSH_SECTION_NAME_EDFMT_BLOCKS);

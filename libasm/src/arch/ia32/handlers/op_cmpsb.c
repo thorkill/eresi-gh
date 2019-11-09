@@ -1,9 +1,8 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_cmpsb.c
+ * @file libasm/src/arch/ia32/handlers/op_cmpsb.c
  * @brief Handler for instruction cmpsb opcode 0xa6
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
@@ -28,8 +27,10 @@ int op_cmpsb(asm_instr *instr, u_char *opcode, u_int len, asm_processor *proc)
   instr->flagswritten = ASM_FLAG_AF | ASM_FLAG_CF | ASM_FLAG_PF |
                         ASM_FLAG_OF | ASM_FLAG_SF | ASM_FLAG_ZF;
 
-  instr->len += asm_operand_fetch(&instr->op[0], opcode + 1, ASM_CONTENT_XSRC, instr);
-  instr->len += asm_operand_fetch(&instr->op[1], opcode + 1, ASM_CONTENT_YDEST, instr);
+  instr->len += asm_operand_fetch(&instr->op[0], opcode + 1, ASM_CONTENT_XSRC,
+                                  instr);
+  instr->len += asm_operand_fetch(&instr->op[1], opcode + 1, ASM_CONTENT_YDEST,
+                                  instr);
 
   return (instr->len);
 }

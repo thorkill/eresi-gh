@@ -1,5 +1,5 @@
 /**
-* @file libasm/src/arch/mips/handlers/asm_mips_ext.c
+ * @file libasm/src/arch/mips/handlers/asm_mips_ext.c
 ** @ingroup MIPS_instrs
 */
 /* Adam 'pi3' Zabrocki */
@@ -8,8 +8,8 @@
 #include "libasm.h"
 
 int asm_mips_ext(asm_instr *ins, u_char *buf, u_int len,
-                  asm_processor *proc)
+                 asm_processor *proc)
 {
-   ins->instr = ASM_MIPS_EXT;
-   return 4;
+  ins->instr = ASM_MIPS_EXT;
+  return 4;
 }

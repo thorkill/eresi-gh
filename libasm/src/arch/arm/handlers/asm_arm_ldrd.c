@@ -1,11 +1,11 @@
 /**
-* @file libasm/src/arch/arm/handlers/asm_arm_ldrd.c
+ * @file libasm/src/arch/arm/handlers/asm_arm_ldrd.c
 ** @ingroup ARM_instrs
 */
 #include "libasm.h"
 
-int     asm_arm_ldrd(asm_instr * ins, u_char * buf, u_int len,
-                    asm_processor * proc)
+int     asm_arm_ldrd(asm_instr *ins, u_char *buf, u_int len,
+                     asm_processor *proc)
 {
   struct s_arm_decode_ldst_misc opcode;
   struct s_asm_proc_arm *inter;
@@ -13,11 +13,12 @@ int     asm_arm_ldrd(asm_instr * ins, u_char * buf, u_int len,
   LIBASM_PROFILE_FIN();
 
   inter = proc->internals;
-  arm_convert_ldst_misc(&opcode,buf);
+  arm_convert_ldst_misc(&opcode, buf);
 
   arm_decode_condition(ins, opcode.cond);
 
-  ins->instr = inter->ldst_misc_table[(opcode.l << 6) | (opcode.s << 5) | opcode.h << 4 | opcode.cond];
+  ins->instr = inter->ldst_misc_table[(opcode.l << 6) | (opcode.s << 5) | opcode.h
+                                                      << 4 | opcode.cond];
 
   ins->name = ins->proc->instr_table[ins->instr];
 

@@ -1,14 +1,13 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_mov_subreg_ib.c
+ * @file libasm/src/arch/ia32/handlers/op_mov_subreg_ib.c
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_mov_subreg_ib" opcode="0xb0"/>
   <instruction func="op_mov_subreg_ib" opcode="0xb1"/>
   <instruction func="op_mov_subreg_ib" opcode="0xb2"/>
@@ -32,7 +31,8 @@ int op_mov_subreg_ib(asm_instr *new, u_char *opcode, u_int len,
   new->len += 1;
 
   new->len += asm_operand_fetch(&new->op[0], opcode, ASM_CONTENT_OPMOD, new);
-  new->len += asm_operand_fetch(&new->op[1], opcode + 1, ASM_CONTENT_IMMEDIATEBYTE, new);
+  new->len += asm_operand_fetch(&new->op[1], opcode + 1,
+                                ASM_CONTENT_IMMEDIATEBYTE, new);
 
   return (new->len);
 }

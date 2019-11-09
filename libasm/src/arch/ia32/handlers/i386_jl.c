@@ -1,14 +1,12 @@
-/*
-** $Id$
+/**
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <i386 func="i386_jl" opcode="0x8c"/>
 */
-
 
 int i386_jl(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
 {

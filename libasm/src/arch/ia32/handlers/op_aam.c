@@ -1,11 +1,10 @@
-/*
-** $Id$
+/**
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
  * Handler for the aam instruction, opcode 0xd4
  * @param new Pointer to instruction structure.
  * @param opcode Pointer to data to disassemble.

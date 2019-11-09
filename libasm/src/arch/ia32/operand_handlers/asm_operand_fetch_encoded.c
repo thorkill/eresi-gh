@@ -2,12 +2,10 @@
  * @file libasm/src/arch/ia32/operand_handlers/asm_operand_fetch_encoded.c
  *
  * @ingroup IA32_operands
- * $Id$
  */
 
 #include <libasm.h>
 #include <libasm-int.h>
-
 
 /**
  * @ingroup operand_handler
@@ -20,9 +18,9 @@
  */
 
 int     asm_operand_fetch_encoded(asm_operand *operand, u_char *opcode,
-				  int otype, asm_instr *ins)
+                                  int otype, asm_instr *ins)
 {
-  int	len;
+  int len;
   operand->content = ASM_CONTENT_ENCODED;
   len = operand_rmv(operand, opcode, ins->proc);
   operand->sbaser = get_reg_intel(operand->baser, operand->regset);

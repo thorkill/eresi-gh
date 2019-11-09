@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/op_ret_i2.c
+ * @file libasm/src/arch/ia32/handlers/op_ret_i2.c
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
@@ -17,7 +16,7 @@
  * @return Length of instruction.
 */
 
-int op_ret_i2(asm_instr *new, u_char *opcode, u_int len, 
+int op_ret_i2(asm_instr *new, u_char *opcode, u_int len,
               asm_processor *proc)
 {
   new->len += 1;
@@ -26,7 +25,8 @@ int op_ret_i2(asm_instr *new, u_char *opcode, u_int len,
   new->instr = ASM_RET;
   new->ptr_instr = opcode;
 
-  new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_IMMEDIATEWORD, new);
+  new->len += asm_operand_fetch(&new->op[0], opcode + 1,
+                                ASM_CONTENT_IMMEDIATEWORD, new);
 
   return (new->len);
 }

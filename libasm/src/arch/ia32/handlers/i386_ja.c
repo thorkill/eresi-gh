@@ -1,8 +1,7 @@
 /**
-* @file libasm/src/arch/ia32/handlers/i386_ja.c
+ * @file libasm/src/arch/ia32/handlers/i386_ja.c
  *
  * @ingroup IA32_instrs
- * $Id$
  *
  */
 #include <libasm.h>
@@ -17,7 +16,6 @@
  *
   <i386 func="i386_ja" opcode="0x87"/>
 */
-
 
 int i386_ja(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
 {

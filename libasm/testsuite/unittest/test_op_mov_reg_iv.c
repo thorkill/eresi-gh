@@ -5,8 +5,6 @@
 #define OPCODE_TO_TEST      "\xBE\x7F\x7D\xE8\x34"
 #define OPCODE_VADDR   0x0804000
 
-
-
 /**
  * @return 1 on success, 0 on failure
  */
@@ -14,9 +12,9 @@ int test32(void)
 {
   asm_processor proc;
   asm_instr     ins;
-  int		ret;
-  char		*dump;
-  int		vaddr;
+  int   ret;
+  char    *dump;
+  int   vaddr;
 
   ret = asm_init_arch(&proc, ASM_PROC_IA32);
   printf("Initialization ret = %i\n", ret);
@@ -35,9 +33,9 @@ int test16(void)
 {
   asm_processor proc;
   asm_instr     ins;
-  int		ret;
-  char		*dump;
-  int		vaddr;
+  int   ret;
+  char    *dump;
+  int   vaddr;
 
   ret = asm_init_arch(&proc, ASM_PROC_IA32);
   printf("Initialization ret = %i\n", ret);
@@ -54,15 +52,13 @@ int test16(void)
  * Call both test for protected and real mode
  */
 
-
-
 int main(int ac, char **av)
 {
-  int	ret;
+  int ret;
   int   failed;
-  
+
   failed = 0;
-  
+
   if ((test32()) != 1)
     {
       printf("test32 failed\n");

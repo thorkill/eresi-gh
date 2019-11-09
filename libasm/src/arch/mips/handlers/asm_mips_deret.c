@@ -1,5 +1,5 @@
 /**
-* @file libasm/src/arch/mips/handlers/asm_mips_deret.c
+ * @file libasm/src/arch/mips/handlers/asm_mips_deret.c
 ** @ingroup MIPS_instrs
 */
 /* Adam 'pi3' Zabrocki */
@@ -10,13 +10,13 @@
 /* DERET */
 
 int asm_mips_deret(asm_instr *ins, u_char *buf, u_int len,
-                  asm_processor *proc)
+                   asm_processor *proc)
 {
-   ins->instr = ASM_MIPS_DERET;
-   ins->type = ASM_TYPE_ARCH | ASM_TYPE_RETPROC;
-   asm_mips_operand_fetch(&ins->op[0], buf, ASM_MIPS_OTYPE_NOOP, ins);
+  ins->instr = ASM_MIPS_DERET;
+  ins->type = ASM_TYPE_ARCH | ASM_TYPE_RETPROC;
+  asm_mips_operand_fetch(&ins->op[0], buf, ASM_MIPS_OTYPE_NOOP, ins);
 
-   /* Exceptions: Coprocessor Unusable, Reserved Instruction */
+  /* Exceptions: Coprocessor Unusable, Reserved Instruction */
 
-   return 4;
+  return 4;
 }

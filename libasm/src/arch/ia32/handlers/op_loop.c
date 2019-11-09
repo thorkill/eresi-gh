@@ -1,11 +1,10 @@
-/*
-** $Id$
+/**
 **
 */
 #include <libasm.h>
 #include <libasm-int.h>
 
-/*
+/**
   <instruction func="op_loop" opcode="0xe2"/>
  */
 
@@ -16,7 +15,8 @@ int op_loop(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
   new->type = ASM_TYPE_BRANCH | ASM_TYPE_CONDCONTROL;
   new->instr = ASM_LOOP;
 
-  new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_SHORTJUMP, new);
+  new->len += asm_operand_fetch(&new->op[0], opcode + 1, ASM_CONTENT_SHORTJUMP,
+                                new);
 
   return (new->len);
 }

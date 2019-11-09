@@ -2,7 +2,6 @@
  * @brief Handler for instruction push ds opcode 0x1e
  *
  * @ingroup IA32_instrs
-** $Id$
 */
 #include <libasm.h>
 #include <libasm-int.h>
@@ -12,7 +11,7 @@
  *
 */
 
-int op_push_ds(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc) 
+int op_push_ds(asm_instr *new, u_char *opcode, u_int len, asm_processor *proc)
 {
   new->ptr_instr = opcode;
   new->instr = ASM_PUSH;

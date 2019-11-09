@@ -1,5 +1,5 @@
 /**
-* @file libasm/src/arch/sparc/operand_handlers/asm_sparc_op_fetch_disp30.c
+ * @file libasm/src/arch/sparc/operand_handlers/asm_sparc_op_fetch_disp30.c
 ** @ingroup SPARC_operands
 */
 #include <libasm.h>
@@ -15,8 +15,8 @@
  * @return Operand length (currently unused in libasm-sparc)
  */
 
-int asm_sparc_op_fetch_disp30(asm_operand *operand, u_char *opcode, 
-                     				   int otype, asm_instr *ins)
+int asm_sparc_op_fetch_disp30(asm_operand *operand, u_char *opcode,
+                              int otype, asm_instr *ins)
 {
   operand->content = ASM_SP_OTYPE_DISP30;
   operand->type    = ASM_OPTYPE_IMM;
