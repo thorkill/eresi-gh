@@ -19,7 +19,7 @@
 /**
  * Temporary buffer outside function to optimize function recursion 
  */
-char buf[BUFSIZ];
+static char buf[BUFSIZ];
 
 /**
  * Transform hash table 

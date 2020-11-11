@@ -25,7 +25,7 @@ hash_t types_added;
 /**
  * Optimize stack allocation by setting a global pointer for string things 
  */
-char buf[BUFSIZ];
+static char buf[BUFSIZ];
 
 /**
  * Advanced iterating of a structure element 
